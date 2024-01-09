@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Spinner from '@/components/Spinner';
 
 
 const SignupPage = () => {
@@ -19,22 +20,24 @@ const SignupPage = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSignUp = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            setIsLoading(true);
-            const response = await axios.post('/api/users/signup', user)
-            console.log(response);
-            router.push('/login');
-        } catch (error: any) {
-            console.log(error);
-        } finally {
-            setIsLoading(false);
+        if (!isLoading) {
+            e.preventDefault();
+            try {
+                setIsLoading(true);
+                const response = await axios.post('/api/users/signup', user)
+                console.log(response);
+                router.push('/login');
+            } catch (error: any) {
+                console.log(error);
+            } finally {
+                setIsLoading(false);
+            }
         }
     }
 
     return (
-        <div className='flex h-screen justify-center items-center w-full bg-gray-100'>
-            <form className="max-w-sm mx-auto w-full shadow rounded p-6 bg-white" onSubmit={(e)=>handleSignUp(e)}>
+        <div className='flex h-screen justify-center items-center w-full bg-gray-100 dark:bg-gray-900'>
+            <form className="max-w-sm mx-auto w-full shadow rounded p-6 bg-white dark:bg-gray-800" onSubmit={(e) => handleSignUp(e)}>
                 <div className="mb-5">
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Name
@@ -76,8 +79,9 @@ const SignupPage = () => {
                 </Link>
                 <button
                     type="submit"
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-white flex justify-center items-center flex-row bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
+                    {isLoading && <span className='mr-1'><Spinner color='#ffffff' size={5} /></span>}
                     Sign Up
                 </button>
             </form>

@@ -1,0 +1,17 @@
+1. Params in Next JS
+
+2. Important
+if (extractDataFromAccessToken(request) instanceof NextResponse) {
+    // If it is, return the response directly
+    return response;
+} -> used when the function is returning the reponse like NextResponse directly and we are using it to return another response in the current function -> maybe we can use it as next() function; -> my thought
+
+The above code is checking if the `response` object is an instance of `NextResponse`. 
+
+`NextResponse` is likely a class or constructor function in your codebase, and this check is used to determine if the `response` object was created using `NextResponse`.
+
+If `response` is indeed an instance of `NextResponse`, the function returns the `response` object directly. This could be a way to handle specific types of responses in your routing logic.
+
+Remember to check where `NextResponse` is defined and what properties or methods it has, as this will give you more context about why this check is necessary and what happens when the `response` is an instance of `NextResponse`.
+
+3. We can access the cookies using NextRequest and NextResponse in the next api code, but the NextRequest is only used to read the cookies and NextResponse is used to modify or delete the cookies
