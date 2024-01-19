@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
         if (user.isVerified === false) {
             return NextResponse.json(
                 { error: "User is not verified" },
-                { status: 400 }
+                { status: 201 }
             );
         }
 

@@ -26,7 +26,7 @@ const LoginPage = () => {
                 setIsLoading(true);
                 const response = await axios.post('/api/users/login', user)
                 console.log(response);
-                router.push('/profile');
+                router.push('/');
             } catch (error: any) {
                 notify(error.response.data.error, error.response.status);
                 console.log(error);
