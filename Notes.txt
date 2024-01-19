@@ -15,3 +15,7 @@ If `response` is indeed an instance of `NextResponse`, the function returns the 
 Remember to check where `NextResponse` is defined and what properties or methods it has, as this will give you more context about why this check is necessary and what happens when the `response` is an instance of `NextResponse`.
 
 3. We can access the cookies using NextRequest and NextResponse in the next api code, but the NextRequest is only used to read the cookies and NextResponse is used to modify or delete the cookies
+
+4. We can create layout.js in the frontend folders for keeping something as common for that route folder
+
+5. .select() function in backend (with mongodb) using find() etc

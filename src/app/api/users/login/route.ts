@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       console.log("User does not exist");
       return NextResponse.json(
         { error: "User does not exist" },
-        { status: 400 }
+        { status: 404 }
       );
     }
 
@@ -40,13 +40,15 @@ export async function POST(request: NextRequest) {
     };
 
     const token = jwt.sign(tokenData, process.env.JWT_TOKEN!, {
-      expiresIn: "1m",
+      expiresIn: "1h",
     });
 
     const response = NextResponse.json(
       { message: "User logged in successfully", success: true },
       { status: 200 }
     );
+
+    console.log(token);
 
     response.cookies.set("auth-token", token, { httpOnly: true });
 

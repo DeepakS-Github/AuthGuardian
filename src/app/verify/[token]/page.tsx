@@ -6,8 +6,10 @@ import { RiErrorWarningFill } from "react-icons/ri";
 import { ImCross } from "react-icons/im";
 import { TiTick } from "react-icons/ti";
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 function Verify({ params }: any) {
+    const router = useRouter();
 
     const [verificationCode, setVerificationCode] = useState(-1);
 
@@ -21,8 +23,13 @@ function Verify({ params }: any) {
     const verify = async () => {
         try {
             const response = await axios.post("/api/users/verify", { token: params.token });
+            console.log(response.data.isVerified);
             setVerificationCode(response.status);
             setVerificationText(response.data.message);
+
+            if (response.status === 200) {
+                router.push('/profile')
+            }
         } catch (error: any) {
             console.log(error);
         }
