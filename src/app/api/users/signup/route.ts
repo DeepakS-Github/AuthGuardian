@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       console.log("User already exists");
       return NextResponse.json(
         { error: "User already exists" },
-        { status: 400 }
+        { status: 402 }
       );
     }
 
@@ -30,6 +30,8 @@ export async function POST(request: NextRequest) {
       email,
       password: hashedPassword,
     });
+
+    console.log(newUser);
 
     const savedUser = await newUser.save();
     console.log(savedUser);

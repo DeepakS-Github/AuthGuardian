@@ -4,32 +4,47 @@
 import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import Image from "next/image"
+
+import Switch from "react-switch";
+
 
 export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
-  useEffect(() =>  setMounted(true), [])
+  const [checked, setChecked] = useState(false);
 
-  if (!mounted) return (
-    <Image
-      src="data:image/svg+xml;base64,PHN2ZyBzdHJva2U9IiNGRkZGRkYiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBoZWlnaHQ9IjIwMHB4IiB3aWR0aD0iMjAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSIyIj48L3JlY3Q+PC9zdmc+Cg=="
-      width={36}
-      height={36}
-      sizes="36x36"
-      alt="Loading Light/Dark Toggle"
-      priority={false}
-      title="Loading Light/Dark Toggle"
-    />
-  )
+  useEffect(()=>{
+    setTheme("light");
+  },[]);
 
-  if (resolvedTheme === 'dark') {
-    return <FiSun onClick={() => setTheme('light')} />
-  }
+  const handleChange = () => {
+    if (resolvedTheme === "dark") {
+      setTheme('light');
+    }
+    else {
+      setTheme('dark');
+    }
+    setChecked(!checked);
+  };
 
-  if (resolvedTheme === 'light') {
-    return <FiMoon onClick={() => setTheme('dark')} />
-  }
 
-}
+
+  return (
+    <div className="flex items-center">
+      <Switch
+        onChange={handleChange}
+        checked={checked}
+        offHandleColor="#f3f4f6"
+        onHandleColor="#1f2937"
+        offColor="#1f2937"
+        onColor="#f3f4f6"
+        // borderRadius={4}
+        uncheckedIcon={<FiMoon className="w-full text-gray-100 h-full p-1.5 flex justify-center items-center" />}
+        checkedIcon={<FiSun className="flex w-full text-gray-800 h-full p-1.5 justify-center items-center" />}
+        uncheckedHandleIcon={<FiSun className="flex w-full text-gray-800 h-full p-1.5 justify-center items-center" />}
+        checkedHandleIcon={<FiMoon className="w-full text-gray-100 h-full p-1.5 flex justify-center items-center" />}
+      />
+    </div>
+  );
+};
+
