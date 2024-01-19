@@ -11,10 +11,10 @@ import Switch from "react-switch";
 export default function ThemeSwitch() {
   const { setTheme, resolvedTheme } = useTheme()
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
 
   useEffect(()=>{
-    setTheme("light");
+    setTheme("dark");
   },[]);
 
   const handleChange = () => {

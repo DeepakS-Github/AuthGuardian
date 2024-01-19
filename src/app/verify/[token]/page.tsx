@@ -28,7 +28,7 @@ function Verify({ params }: any) {
             setVerificationText(response.data.message);
 
             if (response.status === 200) {
-                router.push('/profile')
+                router.push('/')
             }
         } catch (error: any) {
             console.log(error);

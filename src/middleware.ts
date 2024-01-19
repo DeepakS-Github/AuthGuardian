@@ -7,12 +7,8 @@ export function middleware(request: NextRequest){
 
     const authToken =  request.cookies.get('auth-token')?.value || '';
 
-    if(path === '/'){
-        return NextResponse.redirect(new URL('/login', request.nextUrl))
-    }
-
     if(isPublicPath && authToken) {
-        return NextResponse.redirect(new URL('/profile', request.nextUrl));
+        return NextResponse.redirect(new URL('/', request.nextUrl));
     }
 
     if(!isPublicPath && !authToken) {
@@ -26,7 +22,6 @@ export const config = {
         '/',
         '/login',
         '/signup',
-        '/profile',
         '/verify/:path*'
    ]
 }
