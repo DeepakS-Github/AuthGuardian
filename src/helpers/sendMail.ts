@@ -34,11 +34,10 @@ export async function sendVerificationMail(
   }
 
   let config = {
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
+    service : 'gmail',
     auth: {
-      user: process.env.MAILTRAP_USERNAME,
-      pass: process.env.MAILTRAP_PASSWORD,
+      user: process.env.GMAIL_ID,
+      pass: process.env.GMAIL_TOKEN,
     },
   };
 
