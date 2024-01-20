@@ -10,10 +10,12 @@ import Spinner from '@/components/Spinner';
 import { MdDelete } from "react-icons/md";
 import { useSelector } from 'react-redux';
 import { notify } from '@/helpers/notify';
-
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/lib/features/modal/modalSlice';
 
 const ProfilePage = () => {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const verificationStatus = useSelector((state: any) => state.verificationStatus.isVerified);
     console.log(verificationStatus);
@@ -26,7 +28,7 @@ const ProfilePage = () => {
         createdAt: "",
     });
     const [isLoading, setIsLoading] = useState(true);
-    const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+   
 
 
     const getProfileData = async () => {
@@ -54,27 +56,6 @@ const ProfilePage = () => {
         }
     }
 
-    const handleDeleteAccount = async () => {
-        if (isLoading) {
-            alert("Please wait while we are fetching your data.");
-            return
-        };
-        if (!isDeleteLoading) {
-            try {
-                setIsDeleteLoading(true);
-                const response = await axios.delete('/api/users/me')
-                console.log(response);
-                notify(response.data.message, response.status);
-                router.push('/login');
-            } catch (error: any) {
-                console.log(error);
-                notify(error.response.data.error, error.response.status);
-            } finally {
-                setIsDeleteLoading(false);
-            }
-        }
-    }
-
 
     useEffect(() => {
         getUsersData();
@@ -84,7 +65,6 @@ const ProfilePage = () => {
 
     return (
         <>
-
             <div className="flex items-center justify-between w-11/12 mx-auto mt-12 mb-8">
                 <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">Your Profile</h1>
             </div>
@@ -113,10 +93,14 @@ const ProfilePage = () => {
                     type="submit"
                     className="text-white flex justify-center items-center flex-row bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800"
                     onClick={() => {
-                        handleDeleteAccount()
+                        if (isLoading) {
+                            notify("Please wait while we are fetching your data.", "info");
+                            return;
+                        };
+                        dispatch(openModal());
                     }}
                 >
-                    <span className='mr-2'>{isDeleteLoading ? <Spinner /> : <MdDelete className="text-xl" />}</span>
+                    <span className='mr-2'><MdDelete className="text-xl" /></span>
                     Delete Account
                 </button>
             </div>

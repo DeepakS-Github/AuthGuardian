@@ -64,7 +64,7 @@ export async function sendVerificationMail(
     from: "gogan@gmail.com",
     to: emailId,
     subject: "Account Verification from AuthGuardian",
-    html: `<a href='http://localhost:3000/verify/${encodedToken}'>Click here</a>`,
+    html: `<a href='http://localhost:3000/verify/${encodedToken}'>Click here</a> to verify your AuthGuardian account.`,
   };
 
   const mailResp = await transporter.sendMail(message);

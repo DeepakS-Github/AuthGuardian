@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     try {
       await sendVerificationMail(user.email, user.name, user._id.toString());
       return NextResponse.json(
-        { message: "Mail sent successfully" },
+        { message: "Check your mail" },
         { status: 200 }
       );
     } catch (error) {
