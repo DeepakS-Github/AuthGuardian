@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeSwitchProvider } from './providers/ThemeSwitchProvider'
+import { ThemeSwitchProvider } from '@/providers/ThemeSwitchProvider'
 import Navbar from '@/components/Navbar'
-import { StoreProvider } from './providers/StoreProvider'
+import { StoreProvider } from '@/providers/StoreProvider'
 import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmationModal from '@/components/DeleteConfirmationModal'
