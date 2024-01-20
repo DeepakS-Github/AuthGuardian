@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (!user) {
       console.log("User with this email does not exist");
       return NextResponse.json(
-        { error: "User does not exist" },
+        { error: "User with this email does not exist" },
         { status: 404 }
       );
     }

@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import { StoreProvider } from './providers/StoreProvider'
 import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
+import DeleteConfirmationModal from '@/components/DeleteConfirmationModal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <div className='min-h-screen w-full relative bg-gray-100 dark:bg-gray-900'>
           <StoreProvider>
             <ThemeSwitchProvider>
+              <DeleteConfirmationModal/>
               <Navbar />
               {children}
               <ToastContainer/>
