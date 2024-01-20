@@ -42,8 +42,18 @@ Welcome to AuthGuardian, your go-to platform for secure user authentication and 
 
 1. Clone the repository.
 2. Install dependencies using `npm install`.
-3. Set up MongoDB and configure the database connection.
-4. Run the application using `npm run dev`.
+3. Create a `.env` file at the root of the project.
+4. Add the following variables to your `.env` file:
+   
+   ```env
+   MONGODB_URI=your_mongodb_uri
+   JWT_TOKEN=your_jwt_secret
+   GMAIL_ID=your_gmail_id
+   GMAIL_TOKEN=your_appkey_token
+5. Run the application using `npm run dev`.
+
+Make sure to replace `your_mongodb_uri`, `your_jwt_secret`, `your_gmail_id`, and `your_appkey_token` with your actual MongoDB URI, JWT secret, Gmail ID, and Gmail token, respectively. Users should follow the instructions carefully to set up the environment variables needed for the application to function correctly.
+
 
 Feel free to explore, contribute, and make AuthGuardian even better!
 
