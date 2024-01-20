@@ -69,7 +69,7 @@ function DeleteConfirmationModal() {
                                 handleDeleteAccount()
                             }}
                         >
-                            {isDeleteLoading && <span className='mr-2'> <Spinner /></span>}Yes, I'm sure
+                            {isDeleteLoading && <span className='mr-2'> <Spinner /></span>}Yes, I am sure
                         </button>
                     </div>
                 </div>
