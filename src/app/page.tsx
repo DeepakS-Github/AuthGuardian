@@ -16,7 +16,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
 
     const verificationStatus = useSelector((state: RootState) => state.verificationStatus.isVerified);
-    console.log(verificationStatus);
+    // console.log(verificationStatus);
 
     const [users, setUsers] = useState([]);
     const [profileData, setProfileData] = useState({
@@ -43,7 +43,7 @@ const ProfilePage = () => {
             setProfileData(response.data.profile);
         } catch (error: any) {
             notify(error.response.data.error, error.response.status);
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -52,10 +52,10 @@ const ProfilePage = () => {
         setIsLoading(true);
         try {
             const response = await axios.get('/api/users/show');
-            console.log(response.data.users);
+            // console.log(response.data.users);
             setUsers(response.data.users);
         } catch (error: any) {
-            console.log(error);
+            // console.log(error);
             notify(error.response.data.error, error.response.status);
         } finally {
             setIsLoading(false);

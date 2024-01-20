@@ -31,10 +31,10 @@ function Navbar() {
         try {
             setIsLoading(true);
             const response = await axios.get('/api/users/logout');
-            console.log(response);
+            // console.log(response);
             router.push('/login');
         } catch (error: any) {
-            console.log(error);
+            // console.log(error);
             notify(error.response.data.error, error.response.status);
         } finally {
             setIsLoading(false);
@@ -49,11 +49,11 @@ function Navbar() {
         setIsVerifyBtnLoading(true);
         try {
             const response = await axios.get('/api/users/verify_account');
-            console.log(response);
+            // console.log(response);
             notify(response.data.message, response.status);
         } catch (error: any) {
             notify(error.response.data.error, error.response.status);
-            console.log(error);
+            // console.log(error);
         } finally {
             setIsVerifyBtnLoading(false);
         }
@@ -64,10 +64,10 @@ function Navbar() {
         setIsVerificationLoading(true);
         try {
             const response = await axios.get('/api/users/verify');
-            console.log(response.data.isVerified);
+            // console.log(response.data.isVerified);
             dispatch(setVerificationStatus(response.data.isVerified));
         } catch (error: any) {
-            console.log(error);
+            // console.log(error);
             notify(error.response.data.error, error.response.status);
         } finally {
             setIsVerificationLoading(false);

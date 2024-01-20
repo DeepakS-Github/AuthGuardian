@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const user = await User.findOne({ email });
 
     if (user) {
-      console.log("User already exists");
+      // console.log("User already exists");
       return NextResponse.json(
         { error: "User already exists" },
         { status: 402 }
@@ -31,10 +31,10 @@ export async function POST(request: NextRequest) {
       password: hashedPassword,
     });
 
-    console.log(newUser);
+    // console.log(newUser);
 
     const savedUser = await newUser.save();
-    console.log(savedUser);
+    // console.log(savedUser);
 
     
     return NextResponse.json(
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error: any) {
-    console.log(error);
+    // console.log(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

@@ -24,11 +24,11 @@ export async function POST(request: NextRequest) {
 
     const decodedToken = decodeURIComponent(token);
 
-    console.log(decodedToken);
+    // console.log(decodedToken);
 
     const user: UserBody | null = await User.findOne({ verificationToken: decodedToken });
 
-    console.log(user);
+    // console.log(user);
 
     if (!user) {
       return NextResponse.json(

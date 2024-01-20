@@ -54,5 +54,5 @@ export async function sendVerificationMail(
   };
 
   const mailResp = await transporter.sendMail(message);
-  console.log(mailResp);
+  // console.log(mailResp);
 }
