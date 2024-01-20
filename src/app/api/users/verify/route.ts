@@ -5,6 +5,18 @@ import extractDataFromAccessToken from "@/helpers/extractDataFromAccessToken";
 
 dbConnect();
 
+interface UserBody {
+  _id: string; 
+  name: string;
+  email: string;
+  password: string;
+  isVerified: boolean;
+  createdAt: string; 
+  __v: number;
+  verificationToken: string;
+  verificationTokenExpiry: Date; 
+}
+
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
@@ -12,7 +24,11 @@ export async function POST(request: NextRequest) {
 
     const decodedToken = decodeURIComponent(token);
 
-    const user: any = await User.findOne({ verificationToken: decodedToken });
+    console.log(decodedToken);
+
+    const user: UserBody | null = await User.findOne({ verificationToken: decodedToken });
+
+    console.log(user);
 
     if (!user) {
       return NextResponse.json(
@@ -21,7 +37,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (user.verificationTokenExpiry < Date.now()) {
+    if (user.verificationTokenExpiry.getTime() < Date.now()) {
       return NextResponse.json(
         { message: "Verification Token Expired", isVerified: false },
         { status: 401 }
@@ -52,7 +68,7 @@ export async function GET(request: NextRequest) {
       return response;
     }
 
-    const user: any = await User.findById(response);
+    const user: UserBody | null = await User.findById(response);
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });

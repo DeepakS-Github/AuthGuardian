@@ -6,6 +6,18 @@ import { sendVerificationMail } from "@/helpers/sendMail";
 
 dbConnect();
 
+interface UserBody {
+  _id: string; 
+  name: string;
+  email: string;
+  password: string;
+  isVerified: boolean;
+  createdAt: string; 
+  __v: number;
+  verificationToken: string;
+  verificationTokenExpiry: Date; 
+}
+
 export async function GET(request: NextRequest) {
   try {
     const response = await extractDataFromAccessToken(request);
@@ -15,14 +27,14 @@ export async function GET(request: NextRequest) {
       return response;
     }
 
-    const user: any = await User.findById(response);
+    const user: UserBody | null = await User.findById(response);
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     try {
-      await sendVerificationMail(user.email, user.name, user._id.toString());
+      await sendVerificationMail(user.email, user._id.toString());
       return NextResponse.json(
         { message: "Check your mail" },
         { status: 200 }
