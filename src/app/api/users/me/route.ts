@@ -15,14 +15,14 @@ export async function GET(request: NextRequest) {
     const user = await User.findById(response).select(
       "-password -__v -verificationToken -verificationTokenExpiry -_id"
     );
-    console.log(user);
+    // console.log(user);
 
     return NextResponse.json(
       { message: "Successfully Retrieved Profile Data", profile: user },
       { status: 200 }
     );
   } catch (error: any) {
-    console.log(error.message);
+    // console.log(error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
@@ -46,7 +46,7 @@ export async function DELETE(request: NextRequest) {
     response.cookies.set("auth-token", "", { httpOnly: true });
     return response;
   } catch (error: any) {
-    console.log(error.message);
+    // console.log(error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

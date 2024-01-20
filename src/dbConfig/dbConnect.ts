@@ -11,12 +11,12 @@ export async function dbConnect() {
 
         connection.on('error', (error)=>{
             console.log("Error in DB connection");
-            console.log(error);
+            // console.log(error);
         })
 
     } catch (error) {
         console.log("Something went wrong with DB connection");
-        console.log(error);
+        // console.log(error);
     }
 
 }

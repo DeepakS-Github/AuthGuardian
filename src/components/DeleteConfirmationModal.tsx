@@ -20,11 +20,6 @@ function DeleteConfirmationModal() {
 
     const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 
-    useEffect(() => {
-        return () => {
-            console.log(isModalOpen);
-        }
-    }, [isModalOpen])
 
     
     const handleDeleteAccount = async () => {
@@ -33,11 +28,11 @@ function DeleteConfirmationModal() {
             try {
                 setIsDeleteLoading(true);
                 const response = await axios.delete('/api/users/me')
-                console.log(response);
+                // console.log(response);
                 notify(response.data.message, response.status);
                 router.push('/login');
             } catch (error: any) {
-                console.log(error);
+                // console.log(error);
                 notify(error.response.data.error, error.response.status);
             } finally {
                 dispatch(closeModal());

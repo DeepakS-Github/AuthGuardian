@@ -29,14 +29,14 @@ function Verify({ params }: VerifyProps) {
     const verify = async () => {
         try {
             const response = await axios.post("/api/users/verify", { token: params.token });
-            console.log(response.data.isVerified);
+            // console.log(response.data.isVerified);
             setVerificationCode(response.status);
             setVerificationText(response.data.message);
             router.push('/')
         } catch (error: any) {
             setVerificationCode(error.response.status);
             setVerificationText(error.response.data.message);
-            console.log(error);
+            // console.log(error);
         }
     }
 

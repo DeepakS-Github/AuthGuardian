@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     response.cookies.set("auth-token", "", { httpOnly: true });
     return response;
   } catch (error: any) {
-    console.log(error);
+    // console.log(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
