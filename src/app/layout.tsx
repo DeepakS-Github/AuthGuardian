@@ -22,8 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <body className={inter.className}> */}
-      <body>
+      <body className={inter.className}>
         <div className='min-h-screen w-full relative bg-gray-100 dark:bg-gray-900'>
           <StoreProvider>
             <ThemeSwitchProvider>

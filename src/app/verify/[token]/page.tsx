@@ -27,9 +27,9 @@ function Verify({ params }: any) {
             setVerificationCode(response.status);
             setVerificationText(response.data.message);
 
-            if (response.status === 200) {
-                router.push('/')
-            }
+            // if (response.status === 200) {
+            //     router.push('/')
+            // }
         } catch (error: any) {
             console.log(error);
         }
@@ -63,7 +63,7 @@ function Verify({ params }: any) {
     }, []);
 
     return (
-        <div className='w-full min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900'>
+        <div className='w-11/12 mx-auto min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900'>
             <div className='shadow bg-white dark:bg-gray-800 w-96 relative h-40 rounded mx-auto'>
                 <div className={` relative ${verificationTextColor} flex justify-center items-center h-full font-medium text-2xl tracking-normal`}>
                     {verificationText}

@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { formatDate } from '@/helpers/formatDate';
 import TableColumnSkeleton from '@/components/TableColumnSkeleton';
 import TextSkeleton from '@/components/TextSkeleton';
-import Spinner from '@/components/Spinner';
 import { MdDelete } from "react-icons/md";
 import { useSelector } from 'react-redux';
 import { notify } from '@/helpers/notify';
@@ -14,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { openModal } from '@/lib/features/modal/modalSlice';
 
 const ProfilePage = () => {
-    const router = useRouter();
     const dispatch = useDispatch();
 
     const verificationStatus = useSelector((state: any) => state.verificationStatus.isVerified);
@@ -65,25 +62,25 @@ const ProfilePage = () => {
 
     return (
         <>
-            <div className="flex items-center justify-between w-11/12 mx-auto mt-12 mb-8">
-                <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">Your Profile</h1>
+            <div className="flex items-center justify-between w-11/12 mx-auto mt-8 md:mt-12 mb-6 md:mb-8">
+                <h1 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white">Your Profile</h1>
             </div>
 
-            <div className="relative overflow-x-auto w-11/12 mx-auto text-base px-16 py-4 rounded shadow flex justify-between bg-white dark:bg-gray-800 dark:border-gray-700">
-                <div className='flex flex-col justify-center items-start gap-2'>
+            <div className="relative overflow-x-auto w-11/12 mx-auto text-base px-4 md:px-16 py-4 rounded shadow flex justify-between flex-col md:flex-row bg-white dark:bg-gray-800 dark:border-gray-700">
+                <div className='flex flex-col justify-center pb-4 md:pb-0 items-start gap-2 text-sm md:text-base'>
                     <span className='text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white'>NAME</span>
                     {isLoading ? <TextSkeleton /> : <span>{profileData.name}</span>}
                 </div>
-                <div className='border-l-2 px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2'>
+                <div className='border-t-2 md:border-t-0 md:border-l-2 py-4 md:py-0 md:px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2 text-sm md:text-base'>
                     <span className='text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white'>EMAIL</span>
                     {isLoading ? <TextSkeleton /> : <span>{profileData.email}</span>}
                 </div>
-                <div className='border-l-2 px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2'>
+                <div className='border-t-2 md:border-t-0 md:border-l-2 py-4 md:py-0 md:px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2 text-sm md:text-base'>
                     <span className='text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white'>IS VERIFIED?</span>
                     {isLoading ? <TextSkeleton /> : <span>{profileData.isVerified ? "Yes" : "No"}</span>}
 
                 </div>
-                <div className='border-l-2 px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2'>
+                <div className='border-t-2 md:border-t-0 md:border-l-2 pt-4 md:pt-0 md:px-6 border-gray-300 dark:border-gray-500 flex flex-col justify-center items-start gap-2 text-sm md:text-base'>
                     <span className='text-xs font-medium text-gray-900 whitespace-nowrap dark:text-white'>CREATED AT</span>
                     {isLoading ? <TextSkeleton /> : <span>{formatDate(profileData.createdAt)}</span>}
                 </div>
@@ -106,8 +103,8 @@ const ProfilePage = () => {
             </div>
 
 
-            <div className="flex items-center justify-between w-11/12 mx-auto mt-12 mb-8">
-                <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">Other Users</h1>
+            <div className="flex items-center justify-between w-11/12 mx-auto mt-8 md:mt-12 mb-6 md:mb-8">
+                <h1 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white">Other Users</h1>
             </div>
 
 
