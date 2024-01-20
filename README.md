@@ -54,6 +54,10 @@ Welcome to AuthGuardian, your go-to platform for secure user authentication and 
 
 Make sure to replace `your_mongodb_uri`, `your_jwt_secret`, `your_gmail_id`, and `your_appkey_token` with your actual MongoDB URI, JWT secret, Gmail ID, and Gmail token, respectively. Users should follow the instructions carefully to set up the environment variables needed for the application to function correctly.
 
+## Support and Contact
+
+If you encounter any issues, have questions, or need assistance, please feel free to contact me. Your feedback is valuable, and I'm here to help!
+
 
 Feel free to explore, contribute, and make AuthGuardian even better!
 
