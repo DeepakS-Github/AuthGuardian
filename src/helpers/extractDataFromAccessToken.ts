@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
 const extractDataFromAccessToken = async (request: NextRequest) => {
@@ -6,7 +6,7 @@ const extractDataFromAccessToken = async (request: NextRequest) => {
     const authToken = request.cookies.get("auth-token")?.value || "";
 
     // Verify and decode the token
-    const decodedData: any = jwt.verify(authToken, process.env.JWT_TOKEN!);
+    const decodedData: JwtPayload = jwt.verify(authToken, process.env.JWT_TOKEN!) as JwtPayload;
 
     return decodedData.id;
   } catch (error: any) {

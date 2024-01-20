@@ -8,7 +8,13 @@ import { TiTick } from "react-icons/ti";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-function Verify({ params }: any) {
+interface VerifyProps {
+    params: {
+        token: string;
+    };
+}
+
+function Verify({ params }: VerifyProps) {
     const router = useRouter();
 
     const [verificationCode, setVerificationCode] = useState(-1);
