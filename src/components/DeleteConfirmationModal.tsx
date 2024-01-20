@@ -9,13 +9,14 @@ import axios from 'axios';
 import Spinner from './Spinner';
 import { notify } from '@/helpers/notify';
 import { useRouter } from 'next/navigation';
+import { RootState } from '@/lib/store';
 
 
 function DeleteConfirmationModal() {
 
     const dispatch = useDispatch();
     const router = useRouter();
-    const isModalOpen = useSelector((state: any) => state.modalStatus.isModalOpen);
+    const isModalOpen = useSelector((state: RootState) => state.modalStatus.isModalOpen);
 
     const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 

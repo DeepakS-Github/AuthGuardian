@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImSpinner2 } from "react-icons/im";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { ImCross } from "react-icons/im";
@@ -26,11 +26,10 @@ function Verify({ params }: any) {
             console.log(response.data.isVerified);
             setVerificationCode(response.status);
             setVerificationText(response.data.message);
-
-            // if (response.status === 200) {
-            //     router.push('/')
-            // }
+            router.push('/')
         } catch (error: any) {
+            setVerificationCode(error.response.status);
+            setVerificationText(error.response.data.message);
             console.log(error);
         }
     }
@@ -42,13 +41,13 @@ function Verify({ params }: any) {
             setVerificationIcon(
                 <TiTick className="w-full h-full text-green-600 dark:text-green-500" />
             )
-        } else if (verificationCode === 201) {
+        } else if (verificationCode === 401) {
             setVerificationTextColor('text-amber-600 dark:text-amber-500')
             setVerificationIcon(
                 <RiErrorWarningFill className="w-full h-full text-amber-600 dark:text-amber-500" />
             )
         }
-        else if (verificationCode === 203) {
+        else if (verificationCode === 403) {
             setVerificationTextColor('text-red-600 dark:text-red-500');
             setVerificationIcon(
                 <ImCross className="w-full h-full p-2 text-red-600 dark:text-red-500" />

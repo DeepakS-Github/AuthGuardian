@@ -10,11 +10,12 @@ import { useSelector } from 'react-redux';
 import { notify } from '@/helpers/notify';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/lib/features/modal/modalSlice';
+import { RootState } from '@/lib/store';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
 
-    const verificationStatus = useSelector((state: any) => state.verificationStatus.isVerified);
+    const verificationStatus = useSelector((state: RootState) => state.verificationStatus.isVerified);
     console.log(verificationStatus);
 
     const [users, setUsers] = useState([]);
@@ -25,7 +26,15 @@ const ProfilePage = () => {
         createdAt: "",
     });
     const [isLoading, setIsLoading] = useState(true);
-   
+
+
+    interface UserMap {
+        name: string;
+        email: string;
+        isVerified: boolean;
+        createdAt: string;
+    }
+
 
 
     const getProfileData = async () => {
@@ -127,7 +136,7 @@ const ProfilePage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user: any) => (
+                        {users.map((user: UserMap) => (
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {user.name}

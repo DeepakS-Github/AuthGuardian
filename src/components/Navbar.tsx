@@ -9,6 +9,7 @@ import Spinner from './Spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import { setVerificationStatus } from '@/lib/features/verification/verificationSlice';
 import { notify } from '@/helpers/notify';
+import { RootState } from '@/lib/store';
 
 
 function Navbar() {
@@ -22,7 +23,7 @@ function Navbar() {
     const [isLoading, setIsLoading] = useState(false);
     const [isVerificationLoading, setIsVerificationLoading] = useState(true);
     const [isVerifyBtnLoading, setIsVerifyBtnLoading] = useState(false);
-    const isVerified = useSelector((state: any) => state.verificationStatus.isVerified);
+    const isVerified = useSelector((state: RootState) => state.verificationStatus.isVerified);
 
 
     const handleLogout = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

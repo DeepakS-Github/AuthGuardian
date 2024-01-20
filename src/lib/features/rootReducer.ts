@@ -9,4 +9,5 @@ const rootReducer = combineReducers({
   modalStatus: modalReducer,
 });
 
+export type RootState = ReturnType<typeof rootReducer>
 export default rootReducer;
