@@ -90,7 +90,7 @@ function Navbar() {
                         className={`animate-pulse bg-gray-6700 w-36 bg-gray-300 dark:bg-gray-700 cursor-default font-medium rounded text-sm px-5 py-2.5 text-center `}
                     >
                     </div> : <button
-                        className={`text-white flex justify-center items-center ${isVerified ? "bg-green-800 dark:bg-green-700 cursor-default" : "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 focus:ring-4 focus:outline-none "} font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center `}
+                        className={`text-white flex justify-center items-center ${isVerified ? "bg-green-800 dark:bg-green-700 cursor-default" : "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 focus:ring-4 focus:outline-none "} font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center text-nowrap`}
                         onClick={() => {
                             handleAccountVerification();
                         }}
