@@ -49,7 +49,7 @@ export async function sendVerificationMail(
     from: "auth@guardian.com",
     to: emailId,
     subject: "Account Verification from AuthGuardian",
-    html: `<a href='https://auth-guardian-nine.vercel.app/verify/${encodedToken}'>Click here</a> to verify your AuthGuardian account.`,
+    html: `<a target="_blank" href='https://auth-guardian-nine.vercel.app/verify/${encodedToken}'>Click here</a> to verify your AuthGuardian account.`,
   };
 
   const mailResp = await transporter.sendMail(message);
